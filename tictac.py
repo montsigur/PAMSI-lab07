@@ -60,21 +60,43 @@ def CPUplay(board):
 
     x = y = 0
 
-    wagi = []
+    wagi = np.array([[3, 2, 3], [2, 4, 2], [3, 2, 3]])
 
-    for i in range(1, 4):
-        for j in range(1, 4):
-            if board.fields[i][j] != "null":
-
-                if (i % 2 == 0 and j % 2 == 0):
-                    wagi[i][j] = 4
-                elif (i % 2 != 0 and j % 2 != 0):
-                    wagi[i][j] = 3
+    for i in range(3):
+        for j in range(3):
+            if board.fields[i][j] == "null":
+                if i == 1 and j == 1:
+                    for k in range(3):
+                        for l in range(3):
+                            if k != 1 and l != 1:
+                                if board.fields[k][l] == "X" and board.fields[-k+2][-l+2] == "X":
+                                    waga += 50
+                                elif board.fields[k][l] == "O" and board.fields[-k+2][-l+2] == "O":
+                                    waga += 100
+                                elif board.fields[k][l] == "null" and board.fields[-k+2][-l+2] != "null":
+                                    waga += 10
+                            
+                    
+                elif (i != 1 and j != 1):
+                    for k in [0, 1, 1]:
+                        for l in [1, 0, 1]:
+                            if board.fields[k][l] == "X" and board.fields[2*k][2*l] == "X":
+                                waga += 100
+                            elif board.fields[k][l] == "O" and board.fields[2*k][2*l] == "O":
+                                waga += 200
+                            elif board.fields[k][l] != "null" and board.fields[2*k][2*l] == "null" or\
+                                 board.fields[k][l] == "null" and board.fields[2*k][2*l] != "null":
+                                waga += 10
+                    
                 else:
-                    wagi[i][j] = 2
+                    
+                  pass
 
-            else:
-                wagi[i][j] = 0
+    tictacmatrix = [["null" for i in range(3)] for j in range(3)]
+              
+    for i in range(3):
+        for j in range(3):
+            
     
     return (x, y)
             
@@ -83,3 +105,11 @@ if __name__ == "__main__":
     root = tk.Tk()
     B = Board(root)
     tk.mainloop()
+
+
+def tree(tictacmatrix):
+
+    for i in range(3):
+        for j in range(3):
+            if tictacmatrix[i][j] == "null":
+                
