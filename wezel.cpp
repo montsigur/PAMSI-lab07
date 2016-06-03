@@ -4,13 +4,13 @@ using namespace std;
 wezel::wezel(wezel* nadrzedny, plansza P) {
 
   wezel::nadrzedny = nadrzedny;
-  wezel::P = P;
+  plansza_ = P;
 
 }
 
-wezel::wynik() {
+string wezel::wynik() {
 
-  return P.wynik();
+  return plansza_.wynik();
 
 }
 
@@ -18,7 +18,7 @@ bool wezel::porownaj(plansza P) {
 
   for (int i=0; i<3; i++)
     for (int j=0; j<3; j++)
-      if (wezel::P[i][j] != P[i][j])
+      if (plansza_[i][j] != P[i][j])
 	return false;
 
   return true;

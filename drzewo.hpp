@@ -9,7 +9,9 @@ public:
 
   wezel* korzen;
 
-  void dodajWezel(wezel* nadrzedny, plansza P);
+  drzewo();
+
+  wezel* dodajWezel(wezel* nadrzedny, plansza P);
 
 };
 

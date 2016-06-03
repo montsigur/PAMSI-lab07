@@ -6,19 +6,18 @@
 using namespace std;
 
 class wezel {
-
-  plansza P;
   
 public:
-
+  
+  wezel* nadrzedny;
+  vector<wezel*> podrzedne;
+  plansza plansza_;
+  
   wezel(wezel* nadrzedny, plansza P);
 
   string wynik();
 
   bool porownaj(plansza P);
-  
-  wezel* nadrzedny;
-  vector<wezel*> podrzedne;
   
 };
 

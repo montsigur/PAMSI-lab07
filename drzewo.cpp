@@ -1,8 +1,17 @@
 #include "drzewo.hpp"
 using namespace std;
 
-void drzewo::dodajWezel(wezel* nadrzedny, plansza P) {
+drzewo::drzewo() {
 
-  nadrzedny.podrzedne.push_back(new wezel(nadrzedny, P));
+  plansza P;
+  korzen = new wezel(NULL, P);
+  
+}
+
+wezel* drzewo::dodajWezel(wezel* nadrzedny, plansza P) {
+
+  wezel* w = new wezel(nadrzedny, P)
+  nadrzedny.podrzedne.push_back();
+  return w;
 
 }

@@ -6,12 +6,16 @@
 class plansza {
 
   vector< vector<string> > pola;
-
+  
+  string obliczWynik();
+  
 public:
 
+  string wynik;
+  
   plansza();
 
-  string wynik();
+  bool wstaw(int y, int x, string symbol);
 
 };
 

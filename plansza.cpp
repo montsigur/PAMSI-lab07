@@ -9,10 +9,27 @@ plansza::plansza() {
     for (int j=0; j<3; j++)
       pola[i].push_back("null");
 
-  }  
+  }
+
+  wynik = string("nierozstrzygnieta");
 }
 
-string plansza::wynik() {
+bool plansza::wstaw(int y, int x, string symbol) {
+
+  if (pola[y][x] == "null") {
+
+    pola[y][x] = symbol;
+    wynik = obliczWynik();
+    return true;
+
+  }
+
+  else
+    return false;
+
+}
+
+string plansza::obliczWynik() {
 
   symbol = pola[1][1];
   
