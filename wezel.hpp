@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "plansza.hpp"
 using namespace std;
 
 class wezel {
@@ -12,6 +13,8 @@ public:
   wezel* nadrzedny;
   vector<wezel*> podrzedne;
   plansza plansza_;
+  bool prowadziDoPrzegranej;
+  int waga;
   
   wezel(wezel* nadrzedny, plansza P);
 

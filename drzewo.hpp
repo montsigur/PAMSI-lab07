@@ -1,5 +1,5 @@
-#ifndef WEZEL_HPP
-#define WEZEL_HPP
+#ifndef DRZEWO_HPP
+#define DRZEWO_HPP
 #include "wezel.hpp"
 using namespace std;
 

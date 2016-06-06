@@ -10,8 +10,8 @@ drzewo::drzewo() {
 
 wezel* drzewo::dodajWezel(wezel* nadrzedny, plansza P) {
 
-  wezel* w = new wezel(nadrzedny, P)
-  nadrzedny.podrzedne.push_back();
+  wezel* w = new wezel(nadrzedny, P);
+  nadrzedny->podrzedne.push_back(w);
   return w;
 
 }

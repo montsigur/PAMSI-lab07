@@ -3,22 +3,28 @@ using namespace std;
 
 plansza::plansza() {
 
-  for (int i=0; i<3; i++) {
-    
-    pola.push_back(new vector<string>);
+  for (int i=0; i<3; i++)
     for (int j=0; j<3; j++)
-      pola[i].push_back("null");
-
-  }
+      pola(i, j) = 0;
 
   wynik = string("nierozstrzygnieta");
 }
 
-bool plansza::wstaw(int y, int x, string symbol) {
+void plansza::wyczysc() {
+  
+  for (int i=0; i<3; i++)
+    for (int j=0; j<3; j++)
+      pola(i, j) = 0;
+  
+  wynik = string("nierozstrzygnieta");
 
-  if (pola[y][x] == "null") {
+}
 
-    pola[y][x] = symbol;
+bool plansza::wstaw(int y, int x, int symbol) {
+
+  if (pola(y, x) == 0) {
+
+    pola(y, x) = symbol;
     wynik = obliczWynik();
     return true;
 
@@ -29,47 +35,59 @@ bool plansza::wstaw(int y, int x, string symbol) {
 
 }
 
-string plansza::obliczWynik() {
+bool plansza::porownaj(plansza P) {
 
-  symbol = pola[1][1];
-  
   for (int i=0; i<3; i++)
     for (int j=0; j<3; j++)
-      if (i != 1 or j != 1)
-	if (symbol != string("null"))
-	  if ((pola[i][j] == symbol and
-	       pola[2-i][2-j] == symbol) or
-	      (pola[i][0] == symbol and
-	       pola[i][1] == symbol and
-	       pola[i][2] == symbol) or
-	      (pola[0][j] == symbol and
-	       pola[1][j] == symbol and
-	       pola[2][j] == symbol))
-	    if (symbol == string("X"))
-	      return string("przegrana");
-	    else if (symbol == string("O"))
-	      return string("wygrana");
-	    else;
-	  else;
-	else if ((pola[i][0] == string("X") and
-		  pola[i][1] == string("X") and
-		  pola[i][2] == string("X")) or
-		 (pola[0][j] == string("X") and
-		  pola[1][j] == string("X") and
-		  pola[2][j] == string("X")))
-	  return string("przegrana");
-	else if ((pola[i][0] == string("O") and
-		  pola[i][1] == string("O") and
-		  pola[i][2] == string("O")) or
-		 (pola[0][j] == string("O") and
-		  pola[1][j] == string("O") and
-		  pola[2][j] == string("O")))
-	  return string("wygrana");
-	else if (pola[i][j] == "null")
-	  puste_pole = true;
+      if (pola(i, j) != P.pola(i, j))
+	return false;
+  
+  return true;
 
+}
+
+string plansza::obliczWynik() {
+
+  bool puste_pole = false;
+
+  for (int i=0; i<3; i++)
+
+    if (pola.block(i, 0, 1, 3).sum() == 3 or	
+	pola.block(0, i, 3, 1).sum() == 3 or
+	pola.trace() == 3 or
+	pola(2, 0) + pola (1, 1) + pola(0, 2) == 3)
+      return string("wygrana");
+  
+    else if (pola.block(i, 0, 1, 3).sum() == -3 or	
+	     pola.block(0, i, 3, 1).sum() == -3 or
+	     pola.trace() == -3 or
+	     pola(2, 0) + pola (1, 1) + pola(0, 2) == -3)
+      return string("przegrana");
+  
+    else if (pola.prod() == 0)
+      puste_pole = true;
+    
   if (puste_pole)
     return string("nierozstrzygnieta");
   else
     return string("remis");
+}
+
+void plansza::wyswietl() {
+
+  system("clear");
+
+  char symbole[3][2] = {"X", " ", "O"};
+  
+  cout << "     |     |" << endl
+       << "  " << symbole[pola(0, 0) + 1] << "  |  "
+       << symbole[pola(0, 1) + 1]  << "  |  " << symbole[pola(0, 2) + 1]
+       << endl << "_____|_____|_____" << endl << "     |     |" << endl
+       << "  " << symbole[pola(1, 0) + 1] << "  |  " << symbole[pola(1, 1) + 1]
+       << "  |  " << symbole[pola(1, 2) + 1] << endl
+       << "_____|_____|_____" << endl << "     |     |" << endl
+       << "  " << symbole[pola(2, 0) + 1] << "  |  " << symbole[pola(2, 1) + 1]
+       << "  |  " << symbole[pola(2, 2) + 1] << endl
+       << "     |     |" << endl;
+    
 }
