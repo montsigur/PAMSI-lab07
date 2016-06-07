@@ -1,3 +1,6 @@
+// Wojciech Michałowski
+// nr albumu 218705
+
 #ifndef GENERUJDRZEWO_HPP
 #define GENERUJDRZEWO_HPP
 #include "drzewo.hpp"

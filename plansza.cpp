@@ -1,3 +1,6 @@
+// Wojciech Michałowski
+// nr albumu 218705
+
 #include "plansza.hpp"
 using namespace std;
 
@@ -17,7 +20,6 @@ void plansza::wyczysc() {
       pola(i, j) = 0;
   
   wynik = string("nierozstrzygnieta");
-
 }
 
 bool plansza::wstaw(int y, int x, int symbol) {
@@ -79,15 +81,16 @@ void plansza::wyswietl() {
 
   char symbole[3][2] = {"X", " ", "O"};
   
-  cout << "     |     |" << endl
-       << "  " << symbole[pola(0, 0) + 1] << "  |  "
+  cout << "    0     1     2" << endl
+       << "       |     |" << endl
+       << "0   " << symbole[pola(0, 0) + 1] << "  |  "
        << symbole[pola(0, 1) + 1]  << "  |  " << symbole[pola(0, 2) + 1]
-       << endl << "_____|_____|_____" << endl << "     |     |" << endl
-       << "  " << symbole[pola(1, 0) + 1] << "  |  " << symbole[pola(1, 1) + 1]
+       << endl << "  _____|_____|_____" << endl << "       |     |" << endl
+       << "1   " << symbole[pola(1, 0) + 1] << "  |  " << symbole[pola(1, 1) + 1]
        << "  |  " << symbole[pola(1, 2) + 1] << endl
-       << "_____|_____|_____" << endl << "     |     |" << endl
-       << "  " << symbole[pola(2, 0) + 1] << "  |  " << symbole[pola(2, 1) + 1]
+       << "  _____|_____|_____" << endl << "       |     |" << endl
+       << "2   " << symbole[pola(2, 0) + 1] << "  |  " << symbole[pola(2, 1) + 1]
        << "  |  " << symbole[pola(2, 2) + 1] << endl
-       << "     |     |" << endl;
+       << "       |     |" << endl;
     
 }

@@ -1,3 +1,6 @@
+// Wojciech Michałowski
+// nr albumu 218705
+
 #ifndef WEZEL_HPP
 #define WEZEL_HPP
 #include <iostream>

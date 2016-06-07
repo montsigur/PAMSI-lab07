@@ -1,6 +1,8 @@
+// Wojciech Michałowski
+// nr albumu 218705
+
 #include "gra.hpp"
 using namespace std;
-
 
 int minimalnaWaga(vector<wezel*> aktualne) {
 
@@ -114,8 +116,13 @@ void gra::nowaGra(int graczPierwszy, int glebokoscPrzeszukiwan) {
 
   }
 
-  cout << endl << "wynik: " << planszaGry.wynik;
-
+  if (planszaGry.wynik == string("wygrana"))
+    cout << endl << "wynik: przegrana" << endl;
+  else if (planszaGry.wynik == string("przegrana"))
+    cout << endl << "wynik: wygrana" << endl;
+  else
+    cout << endl << "wynik: remis" << endl;
+      
 }
 
 void gra::ruchGracza() {
@@ -132,6 +139,9 @@ void gra::ruchGracza() {
 
   i = stoi(ruch.substr(0, 1));
   j = stoi(ruch.substr(1, 1));
+
+  if (i > 2 or j > 2 or i < 0 or j < 0)
+    continue;
 
   } while(!planszaGry.wstaw(i, j, -1));
 

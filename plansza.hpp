@@ -1,3 +1,6 @@
+// Wojciech Michałowski
+// nr albumu 218705
+
 #ifndef PLANSZA_HPP
 #define PLANSZA_HPP
 #include <cstdlib>
